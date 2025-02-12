@@ -3,23 +3,23 @@ title: SharpHound Enterprise Data Collection and Permissions
 ---
 
 <Frame>
-  <img src="/hc/images/image-2-1.png"/>
+  <img src="/assets/image-2-1.png"/>
 </Frame>
 
 SharpHound Enterprise data collection utilizes the open-source [SharpHound Common](https://github.com/BloodHoundAD/SharpHoundCommon) library, maintained by the BloodHound Enterprise Engineering team.
 
-In BloodHound Enterprise you can start scans for different data types via a [collection schedule](/hc/en-us/articles/Create-a-data-collection-schedule) or an [on-demand scan](/hc/en-us/articles/Run-an-On-Demand-Scan), the data types are:
+In BloodHound Enterprise you can start scans for different data types via a [collection schedule](/collect-data/enterprise-collection/collection-schedule) or an [on-demand scan](/collect-data/enterprise-collection/on-demand-scan), the data types are:
 
-* [Active Directory Structure Data](/hc/en-us/articles/SharpHound-Enterprise-Data-Collection-and-Permissions#ad-structure-data)
+* [Active Directory Structure Data](/collect-data/enterprise-collection/permissions#ad-structure-data)
 * _Local Groups_, collecting:
-    * [Local Group Membership](/hc/en-us/articles/SharpHound-Enterprise-Data-Collection-and-Permissions#local-group-membership)
-    * [User Rights Assignments](/hc/en-us/articles/SharpHound-Enterprise-Data-Collection-and-Permissions#user-rights-assignments)
-* [Sessions](/hc/en-us/articles/SharpHound-Enterprise-Data-Collection-and-Permissions#sessions)
-* [Certificate Services](/hc/en-us/articles/SharpHound-Enterprise-Data-Collection-and-Permissions#certificate-services)
-* [DC Registry](/hc/en-us/articles/SharpHound-Enterprise-Data-Collection-and-Permissions#dc-registry)
-* [CA Registry](/hc/en-us/articles/SharpHound-Enterprise-Data-Collection-and-Permissions#ca-registry)
+    * [Local Group Membership](/collect-data/enterprise-collection/permissions#local-group-membership)
+    * [User Rights Assignments](/collect-data/enterprise-collection/permissions#user-rights-assignments)
+* [Sessions](/collect-data/enterprise-collection/permissions#sessions)
+* [Certificate Services](/collect-data/enterprise-collection/permissions#certificate-services)
+* [DC Registry](/collect-data/enterprise-collection/permissions#dc-registry)
+* [CA Registry](/collect-data/enterprise-collection/permissions#ca-registry)
 
-Local Groups and Sessions can only be collected from domain-joined Windows systems, and require privileged collection to be configured, see [Why perform privileged collection in SharpHound](/hc/en-us/articles/Why-perform-privileged-collection-in-SharpHound). This collection helps understand Attack Paths to individual systems based on non-centralized configurations.
+Local Groups and Sessions can only be collected from domain-joined Windows systems, and require privileged collection to be configured, see [Why perform privileged collection in SharpHound](/collect-data/enterprise-collection/privileged-collection). This collection helps understand Attack Paths to individual systems based on non-centralized configurations.
 
 ## AD Structure Data
 
@@ -39,7 +39,7 @@ SharpHound collects this information utilizing signed LDAP queries against a dom
 
 ### [Granting Access to the Deleted Objects Container (Optional)
 
-To improve reconciliation performance in tracking deleted objects, it is recommended to grant the SharpHound service account [access to the "Deleted Objects" container](https://learn.microsoft.com/en-us/troubleshoot/windows-server/identity/non-administrators-view-deleted-object-container). 
+To improve reconciliation performance in tracking deleted objects, it is recommended to grant the SharpHound service account [access to the "Deleted Objects" container](https://learn.microsoft.com/en-us/troubleshoot/windows-server/identity/non-administrators-view-deleted-object-container).
 
 ## Local Group Membership
 
@@ -90,7 +90,7 @@ SharpHound collects this information utilizing signed LDAP queries against a dom
 
 By default, all Authenticated Users can enumerate almost all Certificate Services data utilized by BloodHound Enterprise.
 
-Two additional types of data can enhance the findings - [DC Registry](/hc/en-us/articles/SharpHound-Enterprise-Data-Collection-and-Permissions#dc-registry) and [CA Registry](/hc/en-us/articles/SharpHound-Enterprise-Data-Collection-and-Permissions#ca-registry).
+Two additional types of data can enhance the findings - [DC Registry](/collect-data/enterprise-collection/permissions#dc-registry) and [CA Registry](/collect-data/enterprise-collection/permissions#ca-registry).
 
 ## DC Registry
 
@@ -102,12 +102,12 @@ Collecting these registry key values requires membership of Administrators on th
 
 ## CA Registry
 
-SharpHound collects the following registry key values on enterprise CAs stored under SYSTEM\\CurrentControlSet\\Services\\CertSvc\\Configuration\\&lt;CA Name&gt;: 
+SharpHound collects the following registry key values on enterprise CAs stored under SYSTEM\\CurrentControlSet\\Services\\CertSvc\\Configuration\\&lt;CA Name&gt;:
 
 * **EnrollmentAgentRights
-    **Contains restrictions for enrollment agents. BloodHound will take the restrictions into account when calculating ADCS ESC3 edges, and assume no restrictions if not collected, as no restrictions are configured by default. 
+    **Contains restrictions for enrollment agents. BloodHound will take the restrictions into account when calculating ADCS ESC3 edges, and assume no restrictions if not collected, as no restrictions are configured by default.
 * **Security
-    **Contains the security descriptor for the enterprise CA i.e. the permissions for Enroll, ManageCA, and ManageCertificates edges against the enterprise CA. This security descriptor is also stored in the AD object of the enterprise CA. SharpHound collects both. The CA registry security descriptor holds the effective permissions. Changes in the CA registry security descriptor are replicated to the AD copy, however, not the other way. Therefore, collecting the CA registry security descriptor may reveal permissions of the enterprise CA that are not present if only collecting the AD object. 
+    **Contains the security descriptor for the enterprise CA i.e. the permissions for Enroll, ManageCA, and ManageCertificates edges against the enterprise CA. This security descriptor is also stored in the AD object of the enterprise CA. SharpHound collects both. The CA registry security descriptor holds the effective permissions. Changes in the CA registry security descriptor are replicated to the AD copy, however, not the other way. Therefore, collecting the CA registry security descriptor may reveal permissions of the enterprise CA that are not present if only collecting the AD object.
 * **PolicyModules\\CertificateAuthority_MicrosoftDefault.Policy\\EditFlags
     **SharpHound checks if the EDITF_ATTRIBUTESUBJECTALTNAME2 flag is present, required to calculate ADCS ESC6 edges.
 

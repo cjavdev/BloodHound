@@ -63,14 +63,14 @@ We’re excited to ring in the spooky season this October with in-person and vir
 
 * **New Attack Paths: Entra-AD User Syncing** \- Introduced to the BloodHound graph in April 2022 as a fully supported feature, Entra has remained a dissociated data set from AD. Ever since we've wanted to connect the graphs to show risk across those connection points. In this release, we're adding coverage of user synchronization - showing where Entra and AD users are synced to each other across those environments. This release will enable users to identify and validate paths across those links via pathfinding and cypher. With this work complete, we're starting a project in BloodHound Enterprise to measure the cross-platform risk from these paths!
 <Frame>
-  <img src="/hc/images/mceclip0-1.png" alt=""/>
+  <img src="/assets/mceclip0-1.png" alt=""/>
 </Frame>
 * **Improved analysis performance: DCSync** \- We've updated the logic that results in the DCSync edges in BloodHound. With this change, these edges will more commonly begin from Groups with this Attack Path primitive within an environment rather than beginning directly from each user. These changes result in BloodHound creating fewer edges during analysis and improved performance during this step.
     _
     Note: This may change Attack Path findings in BloodHound Enterprise environments._
 * **API version on My Profile page** \- When BloodHound CE users report bugs, we ask, "What version are you running?" We never made that easily visible in the application - until now! Browse to the My Profile page under the configuration gear at the top right, and you'll see what version you're running at the bottom of the page.
 <Frame>
-  <img src="/hc/images/mceclip1-2.png" alt=""/>
+  <img src="/assets/mceclip1-2.png" alt=""/>
 </Frame>
 
 
@@ -78,10 +78,10 @@ We’re excited to ring in the spooky season this October with in-person and vir
 
     We're pretty confident we migrated all the different areas to use the theme switcher, but please let us know if we missed anything! We're excited to get this feature tested and generally available; afterward, we look forward to adding additional themes, most notably better support for our color-blind users!
 <Frame>
-  <img src="/hc/images/mceclip2-3.png" alt=""/>
+  <img src="/assets/mceclip2-3.png" alt=""/>
 </Frame>
 <Frame>
-  <img src="/hc/images/mceclip3-4.png" alt=""/>
+  <img src="/assets/mceclip3-4.png" alt=""/>
 </Frame>
 
 #### Bug Fixes

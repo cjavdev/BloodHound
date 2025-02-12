@@ -58,7 +58,7 @@ Register for the webinar [here](https://specterops.zoom.us/webinar/register/WN_R
 * **New Attack Path: WriteGPLink** \- First, a huge thank you, [@q-roland](https://github.com/q-roland), for their contribution of this edge to BloodHound! The WriteGPLink Attack Path indicates the ability to alter the gPLink attribute, which may allow an attacker to apply a malicious Group Policy Object (GPO) to all child user and computer objects (including those in nested OUs). This can be
     exploited to make said child objects execute arbitrary commands through an immediate scheduled task, thus compromising them.
 <Frame>
-  <img src="/hc/images/image-4.png" alt=""/>
+  <img src="/assets/image-4.png" alt=""/>
 </Frame>
 * **22 additional AD properties** \- _(Requires SharpHound v2.5.6+)_ We've added a bunch of new properties to the AD schema, including information around authentication, passwords, and extra domain/trust information with supporting saved queries_._ These new attributes will enable BloodHound users to find additional risks within their environments. The attributes added include:
     * Expire Passwords on Smart Card only Accounts
@@ -84,7 +84,7 @@ Register for the webinar [here](https://specterops.zoom.us/webinar/register/WN_R
     * User Account Control
     * Trust Attributes
 <Frame>
-  <img src="/hc/images/image-5.png" alt=""/>
+  <img src="/assets/image-5.png" alt=""/>
 </Frame>
 * **ESC6a is worse than we thought** \- Through additional research, we've confirmed that ESC6a does _not_ require weak certificate mapping to be enabled for execution. The logic for this Attack Path has been updated accordingly.
 
@@ -94,7 +94,7 @@ Register for the webinar [here](https://specterops.zoom.us/webinar/register/WN_R
 * **Simplify the graph** \- When we initially wrote the ADCS Attack Paths into BloodHound, we used a series of non-transit edges starting with "CanAbuse." These edges were only used to create the final ADCSESC Attack Paths and were not valuable on their own. In this release, we've moved all of the logic previously contained within those edges directly to the analysis for ADCS Attack Paths.
 * **_\[CE Only\]_ Owned glyphs on objects** \- First off, a huge thank you [@palt](https://github.com/palt) for their contribution of this feature to BloodHound! Owned objects will now show an associated glyph icon in Explore.
 <Frame>
-  <img src="/hc/images/image-6.png" alt=""/>
+  <img src="/assets/image-6.png" alt=""/>
 </Frame>
 #### Bug Fixes
 

@@ -54,19 +54,19 @@ We look forward to working with our customers and community members to continue 
 
 * **Dark mode general availability** \- Save your eyeballs with the flip of a switch!
 <Frame>
-  <img src="/hc/images/image-1.png" alt=""/>
+  <img src="/assets/image-1.png" alt=""/>
 </Frame>
 * **Citrix Direct Access Users group support in CanRDP** \- A long-time pain point for BloodHound users, Citrix's preferred deployment model frequently introduced perceived false positives through a compensating control that BloodHound did not model. With today's release, Administrators may optionally enable the ability for BloodHound to identify systems with the default "Direct Access Users" group deployed by Citrix and, where found, to utilize that group membership to limit the scope of the CanRDP Attack Path primitives identified in your environment.
 
     To enable, go to _Administration -> BloodHound_ _Configuration_.
 <Frame>
-  <img src="/hc/images/image-2.png" alt=""/>
+  <img src="/assets/image-2.png" alt=""/>
 </Frame>
 * **_\[BHE Only\]_ Configurable reconciliation timelines** \- BloodHound Enterprise supports automatic data reconciliation for changes made within your environment over time. One of those functions relates to clearing HasSession edges and clearing out data that BloodHound Enterprise has not seen in a long while. Previously hard-coded, Administrators may now configure these values within _Administration -> BloodHound_ _Configuration_.
 
     We've reduced the default values to 7 days for age-out and 3 days for session data. Please feel free to contact your TAM if you have any questions.
 <Frame>
-  <img src="/hc/images/image-3.png" alt=""/>
+  <img src="/assets/image-3.png" alt=""/>
 </Frame>
 * **Improved performance on complex Attack Paths** \- Complex Attack Paths requiring multiple permissions (including ADCS ESC, DCSync, etc.) utilize specialized logic to identify the most common denominator of control, making risk and abuse clearer. This release improves processing logic when Authenticated Users@ or Everyone@ groups are involved.
 * **Improved accuracy on ADCS ESC9 and ESC10 processing logic** \- We've improved the logic for ESC9 and ESC10 Attack Path identification, including additional consideration for SChannel Authentication and DC Strong Certificate binding enforcement.

@@ -4,7 +4,7 @@ description: "The BloodHound team recommends the hardening actions described on 
 ---
 
 <Frame>
-  <img src="/hc/images/image-2-1-1.jpg"/>
+  <img src="/assets/image-2-1-1.jpg"/>
 </Frame>
 Many of the attacks involve privileged collection, in which the SharpHound service account gathers data from domain-joined Windows computers. During privileged collection, an attacker with administrative access to a computer in the domain could attempt to compromise the SharpHound service account, as the account will log in on the computer during the collection.
 
@@ -73,12 +73,12 @@ Members of the Protected Users group cannot be delegated, as described by Micros
 It is possible to prevent an AD principal from using Kerberos delegation services by enabling the account option “Account is sensitive and cannot be delegated”:
 
 <Frame>
-  <img src="/hc/images/image-2-69.png"/>
+  <img src="/assets/image-2-69.png"/>
 </Frame>
 On a Group Manages Service Account (gMSA), this account option is not visible in the GUI, but you can set the account option through PowerShell:
 
 <Frame>
-  <img src="/hc/images/image-2-70.png"/>
+  <img src="/assets/image-2-70.png"/>
 </Frame>
 The value should be _True_ for the account to be protected.
 
@@ -97,7 +97,7 @@ Members of the Protected Users group cannot authenticate with NTLM, as described
 Outgoing NTLM can be denied entirely from the SharpHound server by configuring the security option [Network security: Restrict NTLM: Outgoing NTLM traffic to remote servers](https://learn.microsoft.com/en-us/windows/security/threat-protection/security-policy-settings/network-security-restrict-ntlm-outgoing-ntlm-traffic-to-remote-servers) to _Deny All:_
 
 <Frame>
-  <img src="/hc/images/image-2-71.png"/>
+  <img src="/assets/image-2-71.png"/>
 </Frame>
 
 This prevents the attacker from downgrading the Kerberos authentication to NTLM and remediates NTLM attacks.

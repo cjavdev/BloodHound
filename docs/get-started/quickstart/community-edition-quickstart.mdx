@@ -3,7 +3,7 @@ title: BloodHound Community Edition Quickstart
 ---
 
 <Frame>
-  <img src="/hc/article_attachments/18246479746331.png"/>
+  <img src="/assets/18246479746331.png"/>
 </Frame>
 
 Set up BloodHound Community Edition (BloodHound CE) with Docker Compose and start identifying and visualizing security risks..
@@ -13,7 +13,7 @@ Set up BloodHound Community Edition (BloodHound CE) with Docker Compose and star
 
 # Prerequisites
 
-To complete the quickstart, ensure you meet these system requirements. 
+To complete the quickstart, ensure you meet these system requirements.
 BloodHound CE deploys in a traditional multi-tier container architecture consisting of databases, application, and UI layers.
 
 | Minimum specifications | For large environments (>50K users)  |
@@ -35,11 +35,11 @@ To install BloodHound CE:
     ```bash Linux/MAC
     curl -L https://ghst.ly/getbhce > .\docker-compose.yml
     ```
-    
+
     ``` bash Windows CMD
     curl -L https://ghst.ly/getbhce > .\docker-compose.yml
     ```
-    
+
     ```powershell Windows PowerShell
     Invoke-WebRequest -Uri https://ghst.ly/getbhce -OutFile .\docker-compose.yaml
     ```
@@ -51,19 +51,19 @@ To install BloodHound CE:
     ```bash
     docker compose pull && docker compose up
     ```
-    
-    To run BloodHound CE without needing to maintain the terminal interface, add the flag `d` and run `docker compose logs` to see the most recent logs from the environment. 
-    
+
+    To run BloodHound CE without needing to maintain the terminal interface, add the flag `d` and run `docker compose logs` to see the most recent logs from the environment.
+
     This pulls all the Docker images needed and runs Docker Compose to start up the services from the YAML configuration file.
 
 4. In the terminal log output of Docker Compose, find and copy the randomly generated password from `Initial Password Set To`.
-    
+
     <Warning>
       This password cannot be regenerated. If you lose it, run `docker compose down -v` and then `docker compose up` to reset your databases.
     </Warning>
 
 5. Go to [http://localhost:8080/ui/login](http://localhost:8080/ui/login) and log in with the username `admin` and the password generated from the logs.
-    
+
     <Note>
       The default `docker-compose.yml` example binds only to localhost (127.0.0.1). To access BloodHound outside of localhost, follow the instructions in [examples/docker-compose/README.md](https://github.com/SpecterOps/BloodHound/blob/main/examples/docker-compose/README.md) to configure host binding for the container.
     </Note>
@@ -85,7 +85,7 @@ To ingest the BloodHound sample data:
 1. Go to [Example Data](https://github.com/SpecterOps/BloodHound/wiki/Example-Data) and download sample data.
 
 2. From the BloodHound CE UI, go to settings (⚙️) → **Administration** → **Upload Files**.
-    
+
   <Note> The default admin email address is spam@example.com. You may notice this show up as the user who's ingesting the data.</Note>
 
 ## Option 2: Ingest your data with data collectors
@@ -111,7 +111,7 @@ Run the SharpHound or AzureHound collector. During collection, JSON files are ge
 C:\> SharpHound.exe
 ```
 
-```bash Run AzureHound 
+```bash Run AzureHound
 # Run AzureHound CE
 C:\> AzureHound.exe --username "MattNelson@contoso.onmicrosoft.com" --password "MyVeryStrongPassword" --tenant "contoso.onmicrosoft.com" list
 ```

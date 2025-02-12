@@ -3,7 +3,7 @@ title: Install and Upgrade AzureHound (Windows, Docker, or Kubernetes)
 ---
 
 <Frame>
-  <img src="/hc/article_attachments/18246479746331.png"/>
+  <img src="/assets/18246479746331.png"/>
 </Frame>
 
 _You will need your AzureHound Enterprise configuration file from [Create an AzureHound Configuration](/hc/en-us/articles/Create-an-AzureHound-Configuration) prior to beginning this process.
@@ -31,7 +31,7 @@ Organizations who wish to run multiple AzureHound Enterprise collectors on the s
 5.  Hit Enter, or type 'y', to use the previously created configuration file.
     * AzureHound will copy the configuration settings in your user profile to "C:\\ProgramData\\AzureHound\\config.json", this is a hardcoded configuration file location
 <Frame>
-  <img src="/hc/images/image-163.png" alt=""/>
+  <img src="/assets/image-163.png" alt=""/>
 </Frame>
 6.  **If using certificate authentication:**
     * Copy the certificate and key file created in your user profile to a more central location, for example next to the configuration settings in "C:\\ProgramData\\azurehound"
@@ -40,16 +40,16 @@ Organizations who wish to run multiple AzureHound Enterprise collectors on the s
 ```
     * Edit the configuration file in "C:\\ProgramData\\AzureHound\\config.json" and change the "cert" and "key" values to the new certificate and key file locations.
 <Frame>
-  <img src="/hc/images/image-164.png" alt=""/>
+  <img src="/assets/image-164.png" alt=""/>
 </Frame>
 7.  Start the "AzureHound" service:
 <Frame>
-  <img src="hc/images/image-165.png/" alt=""/>
+  <img src="assets/image-165.png/" alt=""/>
 </Frame>
 
 8.  If configured correctly, the collector client in BloodHound Enterprise will show "Status: Ready", and "Last Checkin: a few seconds ago"
 <Frame>
-  <img src="/hc/images/image-166.png" alt=""/>
+  <img src="/assets/image-166.png" alt=""/>
 </Frame>
 
 ### Upgrade AzureHound Enterprise on Windows
@@ -59,11 +59,11 @@ Upgrading AzureHound Enterprise is done by replacing the previous service binary
 1.  Log into your BloodHound Enterprise tenant.
 2.  Click ⚙️ → **Download Collectors**
 <Frame>
-  <img src="/hc/images/image-167.png" alt=""/>
+  <img src="/assets/image-167.png" alt=""/>
 </Frame>
 3.  Download AzureHound Enterprise by clicking the button **DOWNLOAD AZUREHOUND vX.X.X (.ZIP)**
 <Frame>
-  <img src="/hc/images/image-168.png" alt=""/>
+  <img src="/assets/image-168.png" alt=""/>
 </Frame>
 4.  Extract the contents of the zip archive and locate the binary suitable for your system's architecture
 5.  Log into the server running your AzureHound service
@@ -71,12 +71,12 @@ Upgrading AzureHound Enterprise is done by replacing the previous service binary
 7.  Locate the AzureHound service and open its properties
 8.  From the service properties window, stop AzureHound by clicking **Stop**
 <Frame>
-  <img src="/hc/images/image-169.png" alt=""/>
+  <img src="/assets/image-169.png" alt=""/>
 </Frame>
 9.  Replace the existing "azurehound.exe" binary seen in "Path to executable" with the newly downloaded one
 10. From the service properties window, start AzureHound by clicking **Start**
 <Frame>
-  <img src="/hc/images/image-170.png" alt=""/>
+  <img src="/assets/image-170.png" alt=""/>
 </Frame>
 
 
@@ -92,23 +92,23 @@ Instead of installing AzureHound as a service, it is also possible to run AzureH
 3.  If the connection to BloodHound Enterprise is successful, the program will output "_Waiting for jobs..._".
     * In BloodHound Enterprise, the AzureHound collector client will now show "Status: Ready", and "Last Checkin: a few seconds ago"
 <Frame>
-  <img src="/hc/images/image-171.png" alt=""/>
+  <img src="/assets/image-171.png" alt=""/>
 </Frame>
 4.  If needing to test AzureHound's connectitity to Azure; keep the command prompt open and follow [Run an On Demand Scan](/hc/en-us/articles/Run-an-On-Demand-Scan)
 5.  When started and AzureHound has fetched the job, the command line will output data while the collection is running.
     * If successful, the final message will be "_Collection completed successfully_"
     * If unsuccessful, check the log for errors, or check the AzureHound log generated next to the binary, or contact the BloodHound Enterprise team for support.
 <Frame>
-  <img src="/hc/images/image-172.png" alt=""/>
+  <img src="/assets/image-172.png" alt=""/>
 </Frame>
 <Frame>
-  <img src="/hc/images/image-173.png" alt=""/>
+  <img src="/assets/image-173.png" alt=""/>
 </Frame>
 ## Docker
 
 ### Run AzureHound Enterprise on Docker
 
-1.  Use the attached sample file: [docker-compose.yaml](https://support.bloodhoundenterprise.io/hc/article_attachments/9325923144347)
+1.  Use the attached sample file: [docker-compose.yaml](https://support.bloodhoundenterprise.io/assets/9325923144347)
 2.  Integrate the appropriate structure into your existing configuration or utilize it as a new configuration in Docker, moving the associated config.json, cert.pem, and key.pem files to the appropriate location, and updating config.json according to your assigned values.
 3.  In your docker directory, run:
 ```
@@ -142,7 +142,7 @@ Instead of installing AzureHound as a service, it is also possible to run AzureH
 ```
     kubectl create secret generic azurehound-secret --from-literal tokenId=&lt;bloodhound enterprise token id&gt; --from-literal token=&lt;bloodhound enterprise token&gt; --from-literal keypass=&lt;private key passphrase&gt;
 ```
-3.  A sample deployment.yaml file is attached to this article [here](https://support.bloodhoundenterprise.io/hc/article_attachments/9326136548635).
+3.  A sample deployment.yaml file is attached to this article [here](https://support.bloodhoundenterprise.io/assets/9326136548635).
 4.  Edit the provided deployment.yaml file. Read comments and replace instances of \[ INSERT HERE \] with appropriate values
 5.  Deploy AzureHound on k8s:
 ```

@@ -3,7 +3,7 @@ title: OIDC in BloodHound
 description: 'BloodHound supports OIDC for Single Sign On to authenticate users to your tenant environment.'
 ---
 <Frame>
-  <img src="/hc/images/image-2-1.png"/>
+  <img src="/assets/image-2-1.png"/>
 </Frame>
 
 This integration only provides authentication; user creation and role management will still occur within BloodHound's "Manage Users" interface.
@@ -28,8 +28,8 @@ Currently, BloodHound requires the configuration of OIDC system in the following
 
 If your IDP supports custom icons for configured applications, please feel free to utilize either of the two logos below:
 
-* [Dark-colored icon](/hc/article_attachments/31630065613339.png)
-* [Light-colored icon](/hc/article_attachments/31630065618075.png)
+* [Dark-colored icon](/assets/31630065613339.png)
+* [Light-colored icon](/assets/31630065618075.png)
 
 ## Create the OIDC Configuration
 
@@ -37,19 +37,19 @@ Before proceeding, please make sure you have set up an Identity Provider for Blo
 
 1.  While logged in as an Administrator, click on the gear icon in the top right, then click "Administration."
 <Frame>
-  <img src="/hc/images/image-2-9.png"/>
+  <img src="/assets/image-2-9.png"/>
 </Frame>
 2.  Under the "Authentication" section, choose "SAML Configuration."
 <Frame>
-  <img src="/hc/images/image-2-10.png"/>
+  <img src="/assets/image-2-10.png"/>
 </Frame>
 3.  Click “Create Provider,” then "OIDC Provider."
 <Frame>
-  <img src="/hc/images/image-2-11.png"/>
+  <img src="/assets/image-2-11.png"/>
 </Frame>
 4.  Give the OIDC provider the name you used in the (‘test-idp’ in this example) and provide the Client ID and issuer from your IDP. Click "Submit."
 <Frame>
-  <img src="/hc/images/image-2-12.png"/>
+  <img src="/assets/image-2-12.png"/>
 </Frame>
 5.  BloodHound will provide the URLs related to this new OIDC provider integration.
 
@@ -59,18 +59,18 @@ By default, all users will use a username and password via the built-in authenti
 
 1.  While logged in as an Administrator, click on the gear icon in the top right, then click "Administration."
 <Frame>
-  <img src="/hc/images/image-2-13.png"/>
+  <img src="/assets/image-2-13.png"/>
 </Frame>
 2.  Under the "Authentication" section, choose "SAML Configuration."
 <Frame>
-  <img src="/hc/images/image-2-14.png"/>
+  <img src="/assets/image-2-14.png"/>
 </Frame>
 3.  Locate the user you wish to configure for SAML authentication, click the hamburger menu button on the right side of the row, then "Update User."
 <Frame>
-  <img src="/hc/images/image-2-15.png"/>
+  <img src="/assets/image-2-15.png"/>
 </Frame>
 4.  In the following dialog, modify the authentication method to "Single Sign-On," then select the appropriate SSO provider against which the user's account can authenticate.
 <Frame>
-  <img src="/hc/images/image-2-16.png"/>
+  <img src="/assets/image-2-16.png"/>
 </Frame>
 5.  Click "Save."

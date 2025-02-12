@@ -3,7 +3,7 @@ title: Traversable and Non-Traversable Edge Types
 ---
 
 <Frame>
-  <img src="/hc/images/image-2-1.png"/>
+  <img src="/assets/image-2-1.png"/>
 </Frame>
 
 ## Traversable Edges
@@ -13,7 +13,7 @@ Most edges in BloodHound are traversable, representing a relationship between tw
 For example, consider the ForceChangePassword edge:
 
 <Frame>
-  <img src="/hc/images/image-2-74.png"/>
+  <img src="/assets/image-2-74.png"/>
 </Frame>
 
 The Service Desk group has permission to force change the password of Bob without knowing Bob’s current password. An attacker can abuse this to change the password, log in as Bob, and exploit Bob’s privileges. Traversable edges like ForceChangePassword facilitate graph traversal and enable the pathfinding logic in BloodHound.
@@ -64,13 +64,13 @@ If you cannot abuse a given relationship between two nodes to take control of th
 Pathfinding includes only traversable edges. As a result, you might get a DCSync edge in a path like this:
 
 <Frame>
-  <img src="/hc/images/image-2-75.png"/>
+  <img src="/assets/image-2-75.png"/>
 </Frame>
 
 But you will not see any GetChanges or GetChangesAll edge. However, you can use Cypher to reveal the GetChanges and GetChangeAll edges that the DCSync edge relies on:
 
 <Frame>
-  <img src="/hc/images/image-2-76.png"/>
+  <img src="/assets/image-2-76.png"/>
 </Frame>
 
 

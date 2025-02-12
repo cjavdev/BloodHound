@@ -3,7 +3,7 @@ title: Integrate BloodHound Enterprise with Splunk
 ---
 
 <Frame>
-  <img src="/hc/article_attachments/18258001080731.png"/>
+  <img src="/assets/18258001080731.png"/>
 </Frame>
 
 The BloodHound Enterprise Splunk app ingests your BloodHound Enterprise data into Splunk.
@@ -18,23 +18,23 @@ The BloodHound Enterprise Splunk app ingests your BloodHound Enterprise data int
 
 1.  Log into your Splunk installation and click on the **Find More Apps** button.
 <Frame>
-  <img src="/hc/images/image1-9.png"/>
+  <img src="/assets/image1-9.png"/>
 </Frame>
 2.  Search for "BloodHound Enterprise" and hit Enter. The first result should be the app.
 <Frame>
-  <img src="/hc/images/image1-10.png"/>
+  <img src="/assets/image1-10.png"/>
 </Frame>
 3.  Click **Install**. If not already logged in, you will be prompted for your Splunk.com username and password.
 <Frame>
-  <img src="/hc/images/image1-11.png"/>
+  <img src="/assets/image1-11.png"/>
 </Frame>
 4.  After installation completes, click **Open the App**.
 <Frame>
-  <img src="/hc/images/image1-12.png"/>
+  <img src="/assets/image1-12.png"/>
 </Frame>
 5.  The App will prompt you to configure itself. Click **Continue to the app setup page**.
 <Frame>
-  <img src="/hc/images/image1-13.png"/>
+  <img src="/assets/image1-13.png"/>
 </Frame>
 6.  If you have not already, create an API key/ID pair, following [Create a non-personal API key/ID pair](/hc/en-us/articles/Working-with-the-BloodHound-API#:~:text=Create%20a%20non%2Dpersonal%20API%20key/ID%20pair)
     * The API user must at least have the **_read-only_** role. The **_Administrator_** role is required to collect BloodHound Enterprise audit logs.
@@ -42,7 +42,7 @@ The BloodHound Enterprise Splunk app ingests your BloodHound Enterprise data int
 
     **Please note the warning—the initial collection can take some time, particularly for longer-term BloodHound Enterprise customers.**
 <Frame>
-  <img src="/hc/images/image1-14.png"/>
+  <img src="/assets/image1-14.png"/>
 </Frame>
 
 ## Create Index (Splunk cloud only)
@@ -58,15 +58,15 @@ The index "bhe-splunk-app" will be created automatically if running Splunk on-pr
 
 1.  In Splunk Web, go to **Settings > Data inputs**.
 <Frame>
-  <img src="/hc/images/image1-15.png"/>
+  <img src="/assets/image1-15.png"/>
 </Frame>
 2.  Scroll down, locate, and click on **BloodHound Enterprise**.
 <Frame>
-  <img src="/hc/images/image1-16.png"/>
+  <img src="/assets/image1-16.png"/>
 </Frame>
 3.  Click **Enable** to enable the data input.
 <Frame>
-  <img src="/hc/images/image1-17.png"/>
+  <img src="/assets/image1-17.png"/>
 </Frame>
 
 Data will now begin flowing into the environment. You can monitor this progress through Splunk itself with the following query:

@@ -3,7 +3,7 @@ title: Create a gMSA for use with SharpHound Enterprise
 ---
 
 <Frame>
-  <img src="/hc/images/image-2-1.png"/>
+  <img src="/assets/image-2-1.png"/>
 </Frame>
 Group Managed Service Accounts (gMSA) are managed domain accounts that provide automatic password management, simplified service principal name (SPN) management, and the ability to delegate the management to other objects.
 
@@ -23,7 +23,7 @@ Microsoft gMSA documentation is available [here](https://docs.microsoft.com/en-u
 ```
 3.  If already configured (as seen below), skip this step:
 <Frame>
-  <img src="/hc/images/image-88.png" alt=""/>
+  <img src="/assets/image-88.png" alt=""/>
 </Frame>
 
     Otherwise, create the KDS Root Key:
@@ -31,7 +31,7 @@ Microsoft gMSA documentation is available [here](https://docs.microsoft.com/en-u
     Add-KdsRootKey -EffectiveImmediately
 ```
 <Frame>
-  <img src="/hc/images/image-89.png" alt=""/>
+  <img src="/assets/image-89.png" alt=""/>
 </Frame>
 
 
@@ -56,7 +56,7 @@ Perform the following steps from/against a writeable Domain Controller.
     -PassThru
 ```
 <Frame>
-  <img src="/hc/images/image-90.png" alt=""/>
+  <img src="/assets/image-90.png" alt=""/>
 </Frame>
 
 
@@ -74,7 +74,7 @@ Perform the following steps from/against a writeable Domain Controller.
     -PassThru
 ```
 <Frame>
-  <img src="/hc/images/image-91.png" alt=""/>
+  <img src="/assets/image-91.png" alt=""/>
 </Frame>
 
 
@@ -99,7 +99,7 @@ Perform the following steps from/against a writeable Domain Controller.
 
     NB: If the error "_New-ADServiceAccount : Key does not exist_" shows, try again in 10 hours which will allow all Domain Controllers to converge AD replication of the KDS root key.
 <Frame>
-  <img src="/hc/images/image-92.png" alt=""/>
+  <img src="/assets/image-92.png" alt=""/>
 </Frame>
 
 
@@ -124,14 +124,14 @@ Perform the following steps from/against a writeable Domain Controller.
     Get-WindowsCapability -Name RSAT*
 ```
 <Frame>
-  <img src="/hc/images/image-93.png" alt=""/>
+  <img src="/assets/image-93.png" alt=""/>
 </Frame>
     If the Install State shows "Installed" then skip to step 2, otherwise run:
 ```
     Get-WindowsCapability -Name RSAT* -Online | Add-WindowsCapability -Online
 ```
 <Frame>
-  <img src="/hc/images/image-94.png" alt=""/>
+  <img src="/assets/image-94.png" alt=""/>
 </Frame>
 
 
@@ -142,7 +142,7 @@ Perform the following steps from/against a writeable Domain Controller.
     Test-ADServiceAccount -Identity $gmsaName
 ```
 <Frame>
-  <img src="/hc/images/image-95.png" alt=""/>
+  <img src="/assets/image-95.png" alt=""/>
 </Frame>
 
 3.  The test is successful of the command responds with "True"
@@ -169,7 +169,7 @@ Change the SharpHound Enterprise service to be run by the created gMSA. This can
 
 5.  Save by clicking **OK
 <Frame>
-  <img src="/hc/images/image-96.png" alt=""/>
+  <img src="/assets/image-96.png" alt=""/>
 </Frame>
     **
 
@@ -183,7 +183,7 @@ Change the SharpHound Enterprise service to be run by the created gMSA. This can
     sc.exe config SHDelegator obj= "DOMAIN\\t0\_gMSA\_SHS$"
 ```
 <Frame>
-  <img src="/hc/images/image-97.png" alt=""/>
+  <img src="/assets/image-97.png" alt=""/>
 </Frame>
 
 

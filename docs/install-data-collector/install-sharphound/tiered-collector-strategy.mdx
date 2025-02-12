@@ -3,7 +3,7 @@ title: Deploying a tiered SharpHound Enterprise collector strategy
 ---
 
 <Frame>
-  <img src="/hc/article_attachments/18246479746331.png"/>
+  <img src="/assets/18246479746331.png"/>
 </Frame>
 
 ## Purpose
@@ -52,7 +52,7 @@ In this example, a collector client for Tier Zero will be created.
 1.  Follow the article [Create a SharpHound Enterprise collector client](/hc/en-us/articles/Create-a-BloodHound-Enterprise-collector-client)
     * Tip: Include an indicator for the client's tier in the **Client Name** field, for example, appending it with ”t0”
 <Frame>
-  <img src="/hc/images/image-53.png" alt=""/>
+  <img src="/assets/image-53.png" alt=""/>
 </Frame>
 2.  Install the collector client on the dedicated Tier Zero BloodHound collector server, using the dedicated Tier Zero SharpHound Enterprise service account. [See Install and Upgrade SharpHound Enterprise](/hc/en-us/articles/Install-and-Upgrade-SharpHound-Enterprise).
 
@@ -83,7 +83,7 @@ Only one AD Structure Data schedule is needed, even though multiple tiers exist.
 3.  Set the schedule to only collect **Active Directory Structure Data**
 4.  The completed schedule should look like so:**
 <Frame>
-  <img src="/hc/images/image-54.png" alt=""/>
+  <img src="/assets/image-54.png" alt=""/>
 </Frame>
 
 ### Local Groups and Sessions schedule
@@ -96,9 +96,9 @@ In this example, a schedule is configured on a Tier Zero collector client. Other
 4.  In **Advanced Options** in the setting **Target Local Group and/or User Session Collection by Organizational Unit**, search for the Tier Zero OU(s) containing the domain’s Tier Zero computer objects.
     * Tip: Remember to add your Domain Controllers OU to the Tier Zero schedule.
 <Frame>
-  <img src="/hc/images/image-55.png" alt=""/>
+  <img src="/assets/image-55.png" alt=""/>
 </Frame>
 5.  The completed schedule should look like so:
 <Frame>
-  <img src="/hc/images/image-56.png" alt=""/>
+  <img src="/assets/image-56.png" alt=""/>
 </Frame>

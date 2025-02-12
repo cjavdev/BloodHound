@@ -3,7 +3,7 @@ title: Install and Upgrade SharpHound Enterprise
 ---
 
 <Frame>
-  <img src="/hc/images/image-2-1.png"/>
+  <img src="/assets/image-2-1.png"/>
 </Frame>
 ## Purpose
 
@@ -27,13 +27,13 @@ BHE users may use it during SharpHound Enterprise deployment or upgrades.
 1.  Log into your BloodHound Enterprise tenant.
 2.  Click on the gear icon in the top right corner, followed by **Download Collectors**.
 <Frame>
-  <img src="/hc/images/image-39.png" alt=""/>
+  <img src="/assets/image-39.png" alt=""/>
 </Frame>
 
 
 3.  Click **📥 Download SharpHound v#.#.# (.zip)** on the SharpHound version marked "(Latest)".
 <Frame>
-  <img src="/hc/images/image-40.png" alt=""/>
+  <img src="/assets/image-40.png" alt=""/>
 </Frame>
 
 
@@ -44,42 +44,42 @@ BHE users may use it during SharpHound Enterprise deployment or upgrades.
 8.  SmartScreen may display a warning if you are running Microsoft Defender:
     * Click **More info**.
 <Frame>
-  <img src="/hc/images/image-41.png" alt=""/>
+  <img src="/assets/image-41.png" alt=""/>
 </Frame>
     * Validate the publisher shows **Specter Ops, Inc.** then click **Run anyway**.
 <Frame>
-  <img src="/hc/images/image-42.png" alt=""/>
+  <img src="/assets/image-42.png" alt=""/>
 </Frame>
 
 
 9.  Choose where to install the service and click **Next**. We recommend a path protected from low-privileged user writes such as the default "C:\\Program Files (x86)\\SHService".
 <Frame>
-  <img src="/hc/images/image-43.png" alt=""/>
+  <img src="/assets/image-43.png" alt=""/>
 </Frame>
 
 
 10. Click **Install**.
 <Frame>
-  <img src="/hc/images/image-44.png" alt=""/>
+  <img src="/assets/image-44.png" alt=""/>
 </Frame>
 
 
 11. Provide credentials for your SharpHound service account in the format: _DOMAIN\\username_
     * _If using a gMSA, according to our [Hardening Guidelines](/hc/en-us/articles/SharpHound-Enterprise-Service-Hardening), you must provide the credentials for a normal user account with local administrator access to the system, then post-installation, change the service to run as the gMSA as described in [Add the gMSA to the SharpHound Enterprise service](/hc/en-us/articles/Create-a-gMSA-for-use-with-SharpHound-Enterprise)._
 <Frame>
-  <img src="/hc/images/image-45.png" alt=""/>
+  <img src="/assets/image-45.png" alt=""/>
 </Frame>
 
 
 12. Click **Finish**.
 <Frame>
-  <img src="/hc/images/image-46.png" alt=""/>
+  <img src="/assets/image-46.png" alt=""/>
 </Frame>
 
 
 13. The "SharpHoundDelegator" service has now been installed. If you don't see the service, see the headline: [I don't see the SHDelegator Service](#h_01GECRFRNEMXKS76D21VFYBK5C)
 <Frame>
-  <img src="/hc/images/image-47.png" alt=""/>
+  <img src="/assets/image-47.png" alt=""/>
 </Frame>
 
 
@@ -93,7 +93,7 @@ BHE users may use it during SharpHound Enterprise deployment or upgrades.
 17. Start the service. If service start fails see the headline: [The SharpHound Delegator Service won't start](#h_01GECRNKQG8YEXEEEDHTE4CG1B)
 18. Return to BloodHound Enterprise, and you should see the client reporting "🟢 Ready"
 <Frame>
-  <img src="/hc/images/image-48.png" alt=""/>
+  <img src="/assets/image-48.png" alt=""/>
 </Frame>
 19. Perform your scan by either:
     1.  [Create a data collection schedule](/hc/en-us/articles/Create-a-data-collection-schedule)
@@ -104,13 +104,13 @@ BHE users may use it during SharpHound Enterprise deployment or upgrades.
 1.  Log into your BloodHound Enterprise tenant.
 2.  Click on the gear icon in the top right corner, followed by **Download Collectors**
 <Frame>
-  <img src="/hc/images/image-49.png" alt=""/>
+  <img src="/assets/image-49.png" alt=""/>
 </Frame>
 
 
 3.  Click **📥 Download SharpHound v#.#.# (.zip)** on the SharpHound version marked "(Latest)".
 <Frame>
-  <img src="/hc/images/image-50.png" alt=""/>
+  <img src="/assets/image-50.png" alt=""/>
 </Frame>
 
 4.  Connect to the SharpHound Enterprise server.
@@ -118,7 +118,7 @@ BHE users may use it during SharpHound Enterprise deployment or upgrades.
 6.  Run **SHSetup-v#.#.#.exe** as an Administrator.
 7.  Click **Finish**.
 <Frame>
-  <img src="/hc/images/image-51.png" alt=""/>
+  <img src="/assets/image-51.png" alt=""/>
 </Frame>
 
 
@@ -137,7 +137,7 @@ Most frequently, this is the result of one of two issues:
 The installation log may be of help in troubleshooting and can be found in the file "InstallUtil.Install.Log" in the installation directory; the default path is "C:\\Program Files (x86)\\SHService\\InstallUtil.Install.Log".
 
 <Frame>
-  <img src="/hc/images/image-52.png" alt=""/>
+  <img src="/assets/image-52.png" alt=""/>
 </Frame>
 
 ### The SharpHound Delegator Service won't start

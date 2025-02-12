@@ -64,7 +64,7 @@ Register today: [https://events.humanitix.com/tours/so-con-2024](https://events.
 * **Expanded memory limit for query execution -** We have doubled the default memory available for executing queries within BloodHound (including Cypher and Entity Panel queries). This should expand the possibility of returning results without running into out-of-memory issues.
 * **Group Management tab -** Completely new to CE and an additional view of Tier Zero resources for BHE, the Group Management view will let you review and modify current asset group members for Tier Zero / High Value as well as for Owned group in CE. We have additional enhancements coming to this view soon to filter and search the list!
 <Frame>
-  <img src="/hc/images/image-23.png" alt=""/>
+  <img src="/assets/image-23.png" alt=""/>
 </Frame>
 * **Improved performance of AZResetPassword paths -** Prior to today's update, AZResetPassword edges were generated between principals based on their assigned roles; each path was created from a principal holding a role that granted it the ability to reset the password of another principal. This resulted in an explosion of the number of edges created in the database. Starting with this release, AZResetPassword edges will be created between a role and a principal for which it can reset passwords.
 
@@ -76,7 +76,7 @@ Register today: [https://events.humanitix.com/tours/so-con-2024](https://events.
 * **Azure role Partner Tier2 Support is now a default member of Tier Zero / High Value asset groups**.
 * **_\[CE Only\]_ Added ability to mark objects as "Owned" -** As promised when we released BloodHound: CE, the "Mark as Owned" feature has returned to BloodHound! Just like before, you may right-click on an object in the Explore pane and add it to the Owned group. Additionally, you may directly add or remove objects from the new Group Management view, added in this release.
 <Frame>
-  <img src="/hc/images/image-24.png" alt=""/>
+  <img src="/assets/image-24.png" alt=""/>
 </Frame>
 #### Bug Fixes
 
