@@ -7,7 +7,7 @@ description: "Remote Desktop access allows you to enter an interactive session w
   <img src="/assets/image-2-1.png"/>
 </Frame>
 
-This edge will be created under the condition that the user both has membership in Remote Desktop Users and is granted the URA SeRemoteInteractiveLogonRight. Respectively these two are visualized in BloodHound by the edges  [MemberOfLocalGroup](/hc/en-us/articles/MemberOfLocalGroup) and [RemoteInteractiveLogonPrivilege](/hc/en-us/articles/RemoteInteractiveLogonPrivilege).
+This edge is created when BloodHound finds that a principal has RDP access to a computer through the edges [MemberOfLocalGroup](/resources/edges/member-of-local-group) and [RemoteInteractiveLogonPrivilege](/resources/edges/remote-interactive-logon-privilege).
 
 <Info>
 **Note**
@@ -27,7 +27,7 @@ With plaintext credentials, the easiest way to exploit this privilege is using t
 
 With a password hash, exploitation of this privilege will require local administrator privileges on a system, and the remote server must allow Restricted Admin Mode.
 
-First, inject the NTLM credential for the user you’re abusing into memory using mimikatz:
+First, inject the NTLM credential for the user you're abusing into memory using mimikatz:
 
 ```bash
 lsadump::pth /user:dfm /domain:testlab.local /ntlm:<ntlm hash> /run:"mstsc.exe /restrictedadmin"
@@ -63,6 +63,6 @@ Remote desktop will create Logon and Logoff events with the access type RemoteIn
 
 ## References
 
-* [https://edermi.github.io/post/2018/native\_rdp\_pass\_the\_hash/](https://edermi.github.io/post/2018/native_rdp_pass_the_hash/)
+* [https://edermi.github.io/post/2018/native\_rdp\_pass\_the_hash/](https://edermi.github.io/post/2018/native_rdp_pass_the_hash/)
 * [https://www.kali.org/blog/passing-hash-remote-desktop/](https://www.kali.org/blog/passing-hash-remote-desktop/)
 * [https://blog.cptjesus.com/posts/userrightsassignment/](https://blog.cptjesus.com/posts/userrightsassignment/)

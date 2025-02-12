@@ -9,13 +9,13 @@ description: "This edge indicates that the principal has control over a victim p
 
 The victim also has enrollment permission for an enterprise CA with the necessary templates published. This enterprise CA is trusted for NT authentication in the forest, and chains up to a root CA for the forest. There is an affected Domain Controller (DC) configured to allow UPN certificate mapping. This setup lets the principal impersonate any AD forest computer, or any user where UPN does not match their sAMAccountName, without knowing their credentials.
 
-The attacker principal can abuse their control over the victim principal to modify the victim’s UPN to match the sAMAccountName of a targeted principal followed by @CORP.LOCAL.
+The attacker principal can abuse their control over the victim principal to modify the victim's UPN to match the sAMAccountName of a targeted principal followed by @CORP.LOCAL.
 
 Example: If the targeted principal is Administrator user of domain CORP.LOCAL, the victim's UPN will be populated with "Administrator@CORP.LOCAL". The attacker principal will then abuse their control over the victim principal to obtain the credentials of the victim principal, or a session as the victim principal, and enroll a certificate as the victim in one of the affected certificate templates. The UPN of the victim
 ("Administrator@CORP.LOCAL") will be included in the issued certificate under the SAN. Next, the attacker
 principal will again set the UPN of the victim, this time to an arbitrary string (e.g. the original value).
 
-The issued certificate can now be used for authentication against an affected DC. The UPN certificate mapping configuration on the DC makes the DC use the SAN value to map the certificate to a principal when performing Schannel authentication. The DC will attempt to find a principal with a UPN matching the SAN value (“Administrator@CORP.LOCAL”) but as the victim’s UPN has been changed after the enrollment, there will be no principals with this UPN. The DC will then attempt to find a principal with a{' '}
+The issued certificate can now be used for authentication against an affected DC. The UPN certificate mapping configuration on the DC makes the DC use the SAN value to map the certificate to a principal when performing Schannel authentication. The DC will attempt to find a principal with a UPN matching the SAN value ("Administrator@CORP.LOCAL") but as the victim's UPN has been changed after the enrollment, there will be no principals with this UPN. The DC will then attempt to find a principal with a{' '}
 sAMAccountName matching the SAN value and find the targeted user. In case the target is a computer, the DC will find it, and the DC will attempt sAMAccountName matching with a $ at the end of the SAN value as last resort. At last, the DC will authenticate the attacker as the targeted principal.
 
 ## Abuse Info
@@ -49,7 +49,7 @@ If the certificate template is of schema version 2 or above, and its attribute '
 If the certificate template is of schema version 1 or does not have any of the email flags, then
 continue to Step 4.
 
-If any of the two flags are present, you will need the victim’s mail attribute to be set. The value of
+If any of the two flags are present, you will need the victim's mail attribute to be set. The value of
 the attribute will be included in the issues certificate but it is not used to identify the target
 principal why it can be set to any arbitrary string.
 
@@ -67,18 +67,18 @@ If the victim does not has the mail attribute set, set it to a dummy mail using 
 Set-DomainObject -Identity VICTIM -Set @{'mail'='dummy@mail.com'}
 ```
 
-Step 4: Obtain a session as victim.  There are several options for this step.
+Step 4: Obtain a session as victim. There are several options for this step.
 
 If the victim is a computer, you can obtain the credentials of the computer account using the Shadow
-Credentials attack (see [AddKeyCredentialLink edge](/hc/en-us/articles/AddKeyCredentialLink) documentation). 
+Credentials attack (see [AddKeyCredentialLink edge](/resources/edges/add-key-credential-link) documentation).
 
-Alternatively, you can obtain a session as SYSTEM on the host, which allows you to interact with AD as the computer account, by abusing control over the computer AD object (see [GenericAll edge](/hc/en-us/articles/GenericAll) documentation).
+Alternatively, you can obtain a session as SYSTEM on the host, which allows you to interact with AD as the computer account, by abusing control over the computer AD object (see [GenericAll edge](/resources/edges/generic-all) documentation).
 
 If the victim is a user, you have the following options for obtaining the credentials:
 
-* Shadow Credentials attack (see [AddKeyCredentialLink edge](/hc/en-us/articles/AddKeyCredentialLink) documentation).
-* Password reset (see [ForceChangePassword edge](/hc/en-us/articles/ForceChangePassword) documentation).
-* Targeted Kerberoasting (see [WriteSPN edge](/hc/en-us/articles/WriteSPN) documentation).
+* Shadow Credentials attack (see [AddKeyCredentialLink edge](/resources/edges/add-key-credential-link) documentation).
+* Password reset (see [ForceChangePassword edge](/resources/edges/force-change-password) documentation).
+* Targeted Kerberoasting (see [WriteSPN edge](/resources/edges/write-spn) documentation).
 
 Step 5: Enroll certificate as victim. Use Certipy as the victim principal to request enrollment in the affected template, specifying the affected EnterpriseCA:
 
@@ -120,7 +120,7 @@ If the certificate template is of schema version 2 or above, and its attribute '
 If the certificate template is of schema version 1 or does not have any of the email flags, then
 continue to Step 3.
 
-If any of the two flags are present, you will need the victim’s mail attribute to be set. The value of
+If any of the two flags are present, you will need the victim's mail attribute to be set. The value of
 the attribute will be included in the issues certificate but it is not used to identify the target
 principal why it can be set to any arbitrary string.
 
@@ -137,18 +137,18 @@ If the victim does not has the mail attribute set, set it to a dummy mail using 
 echo -e "dn: VICTIM-DN\nchangetype: modify\nreplace: mail\nmail: test@mail.com" | ldapmodify -x -D "ATTACKER-DN" -w 'PWD' -h DOMAIN-DNS-NAME
 ```
 
-Step 3: Obtain the credentials of victim.  There are several options for this step.
+Step 3: Obtain the credentials of victim. There are several options for this step.
 
 If the victim is a computer, you can obtain the credentials of the computer account using the Shadow
-Credentials attack (see [AddKeyCredentialLink edge](/hc/en-us/articles/AddKeyCredentialLink) documentation). 
+Credentials attack (see [AddKeyCredentialLink edge](/resources/edges/add-key-credential-link) documentation).
 
-Alternatively, you can obtain a session as SYSTEM on the host, which allows you to interact with AD as the computer account, by abusing control over the computer AD object (see [GenericAll edge](/hc/en-us/articles/GenericAll) documentation).
+Alternatively, you can obtain a session as SYSTEM on the host, which allows you to interact with AD as the computer account, by abusing control over the computer AD object (see [GenericAll edge](/resources/edges/generic-all) documentation).
 
 If the victim is a user, you have the following options for obtaining the credentials:
 
-* Shadow Credentials attack (see [AddKeyCredentialLink edge](/hc/en-us/articles/AddKeyCredentialLink) documentation).
-* Password reset (see [ForceChangePassword edge](/hc/en-us/articles/ForceChangePassword) documentation).
-* Targeted Kerberoasting (see [WriteSPN edge](/hc/en-us/articles/WriteSPN) documentation).
+* Shadow Credentials attack (see [AddKeyCredentialLink edge](/resources/edges/add-key-credential-link) documentation).
+* Password reset (see [ForceChangePassword edge](/resources/edges/force-change-password) documentation).
+* Targeted Kerberoasting (see [WriteSPN edge](/resources/edges/write-spn) documentation).
 
 Step 4: Enroll certificate as victim. Use Certipy as the victim principal to request enrollment in the affected template, specifying the affected EnterpriseCA:
 

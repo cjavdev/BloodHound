@@ -6,7 +6,7 @@ title: SharpHound Enterprise Local Configuration
   <img src="/assets/image-2-1.png"/>
 </Frame>
 
-The local configuration of SharpHound Enterprise occurs within two files: [settings.json](#h_01HCMSM9D1GZPQS4YZYP9W2XM8) and [auth.json](#BloodHoundEnterpriseFAQ-SharpHoundsettings.jsonblank), their file paths can be found in the table below. Note that %AppData% is the directory of the service account: "C:\\Users\\SERVICE_ACCOUNT$\\AppData\\Roaming".
+The local configuration of SharpHound Enterprise occurs within two files: [settings.json](#settings-json) and [auth.json](#auth-json), their file paths can be found in the table below. Note that %AppData% is the directory of the service account: "C:\\Users\\SERVICE_ACCOUNT$\\AppData\\Roaming".
 
 | **SharpHound File** | **Default Path (v2.5.8+)  <br/>** | **Default Path (\v2.5.8)  <br/>** |
 | --- | --- | --- |
@@ -30,27 +30,29 @@ To modify any settings below on your SharpHound configuration, you must stop the
 Plaintext JSON file that defines information about how the service behaves, such as settings for connecting to the BloodHound Enterprise tenant, connecting to Active Directory, and writing logs.
 
 An example of the file:
+
 ```json
 {
-"RestEndpoint": "CODENAME.bloodhoundenterprise.io",
-"RestPort": 443,
-"SSL": true,
-"CurrentJob": null,
-"LogLevel": "Information",
-"EnumerationLogLevel": "Information",
-"TempDirectory": "C:\\\Users\\\gmsa_SHS$\\\AppData\\\Roaming\\\BloodHoundEnterprise",
-"Proxy": null,
-"ComputerPasswordResetWindow": 60,
-"ForceLDAPKerberosAuth": true,
-"PortCheckTimeout": 10000,
-"LDAPSSLPort": 636,
-"LDAPPort": 389,
-"ForceLDAPSSL": false,
-"NumWorkers": 50,
-"PartitionLDAPQueries": true,
-"Version": "2.5.9.0"
+  "RestEndpoint": "CODENAME.bloodhoundenterprise.io",
+  "RestPort": 443,
+  "SSL": true,
+  "CurrentJob": null,
+  "LogLevel": "Information",
+  "EnumerationLogLevel": "Information",
+  "TempDirectory": "C:\\\Users\\\gmsa_SHS$\\\AppData\\\Roaming\\\BloodHoundEnterprise",
+  "Proxy": null,
+  "ComputerPasswordResetWindow": 60,
+  "ForceLDAPKerberosAuth": true,
+  "PortCheckTimeout": 10000,
+  "LDAPSSLPort": 636,
+  "LDAPPort": 389,
+  "ForceLDAPSSL": false,
+  "NumWorkers": 50,
+  "PartitionLDAPQueries": true,
+  "Version": "2.5.9.0"
 }
 ```
+
 The following table outlines supported fields and their default values:
 
 | **Field** | **Type** | **Description** | **Default value** | **Example value** |
@@ -64,7 +66,7 @@ The following table outlines supported fields and their default values:
 | TempDirectory | String | Directory in which logs and temporary files are stored. Upon service start, if this value is null, the service will default to the "%APPDATA%\\Roaming\\BloodHound Enterprise\\" directory belonging to the service user.<br/><br/>Logs are retained for 14 days.<br/><br/>Backslashes (\\) must be escaped for proper JSON formatting, i.e. double backslashes are required. | null | "C:\\\Users\\\**SERVICE_USER$**\\\ AppData\\\Roaming\\\BloodHound Enterprise\\\" |
 | Proxy | String | HTTP Proxy URL if needed. | null | "proxy.acme.com:8080" |
 | ComputerPasswordResetWindow | Integer | When performing local collections, any computer objects that have not rotated their password with the domain in this many days will be excluded. By default, computers in Active Directory rotated their passwords every 30 days.<br/><br/>_Minimum value: 7_  <br/>  <br/>This Windows setting specifies how often the computer will rotate its password: [https://learn.microsoft.com/en-us/windows/security/threat-protection/security-policy-settings/domain-member-maximum-machine-account-password-age](https://learn.microsoft.com/en-us/windows/security/threat-protection/security-policy-settings/domain-member-maximum-machine-account-password-age)  <br/>  <br/>It is possible to prevent a Windows computer from rotating its password completely with this setting: [https://learn.microsoft.com/en-us/windows/security/threat-protection/security-policy-settings/domain-member-disable-machine-account-password-changes](https://learn.microsoft.com/en-us/windows/security/threat-protection/security-policy-settings/domain-member-disable-machine-account-password-changes) | 60  | 365 |
-| ForceLDAPKerberosAuth | Boolean | Enforce the use of Kerberos authentication when querying LDAP servers. Disabling this may be required to collect across an External trust type (see [Cross-Trust Collection here](/hc/en-us/articles/SharpHound-Enterprise-Cross-Trust-Collection)).<br/><br/>Setting this value to False means that SharpHound will auto-negotiate authentication to domain controllers, preferring Kerberos if available. | False | True |
+| ForceLDAPKerberosAuth | Boolean | Enforce the use of Kerberos authentication when querying LDAP servers. Disabling this may be required to collect across an External trust type (see [Cross-Trust Collection here](/collect-data/enterprise-collection/cross-trust)).<br/><br/>Setting this value to False means that SharpHound will auto-negotiate authentication to domain controllers, preferring Kerberos if available. | False | True |
 | PortCheckTimeout | Integer | In milliseconds, SharpHound will wait for a response on port 445/TCP before considering the system unavailable.<br/><br/>_Minimum value: 200_<br/><br/>_Requires SharpHound Enterprise v2.2.1+_ | 10000 | 15000 |
 | LDAPSSLPort | Integer | TCP port utilized for collection on LDAP over SSL.<br/><br/>_Requires SharpHound Enterprise v2.2.1+_ | 636 | 636 |
 | LDAPPort | Integer | TCP port utilized for collection on LDAP. | 389 | 389 |

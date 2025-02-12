@@ -17,7 +17,7 @@ BHE users may use it during SharpHound Enterprise deployment or upgrades.
 ## Prerequisites
 
 
-* Deployment of a domain-joined Windows server to run the service; see [SharpHound Enterprise System Requirements and Deployment Process](/hc/en-us/articles/SharpHound-Enterprise-System-Requirements-and-Deployment-Process)
+* Deployment of a domain-joined Windows server to run the service; see [SharpHound Enterprise System Requirements and Deployment Process](/install-data-collector/install-sharphound/system-requirements)
 * Logged in as a user role, which is authorized to run download SharpHound Enterprise installation binaries; see User Role Definitions
 
 ## Process
@@ -65,7 +65,7 @@ BHE users may use it during SharpHound Enterprise deployment or upgrades.
 
 
 11. Provide credentials for your SharpHound service account in the format: _DOMAIN\\username_
-    * _If using a gMSA, according to our [Hardening Guidelines](/hc/en-us/articles/SharpHound-Enterprise-Service-Hardening), you must provide the credentials for a normal user account with local administrator access to the system, then post-installation, change the service to run as the gMSA as described in [Add the gMSA to the SharpHound Enterprise service](/hc/en-us/articles/Create-a-gMSA-for-use-with-SharpHound-Enterprise)._
+    * _If using a gMSA, according to our [Hardening Guidelines](/manage-bloodhound/securing-bloodhound-and-collectors/sharphound-hardening), you must provide the credentials for a normal user account with local administrator access to the system, then post-installation, change the service to run as the gMSA as described in [Add the gMSA to the SharpHound Enterprise service](/install-data-collector/install-sharphound/create-gmsa)._
 <Frame>
   <img src="/assets/image-45.png" alt=""/>
 </Frame>
@@ -83,21 +83,21 @@ BHE users may use it during SharpHound Enterprise deployment or upgrades.
 </Frame>
 
 
-14. If using a gMSA, according to our [Hardening Guidelines](/hc/en-us/articles/SharpHound-Enterprise-Service-Hardening), change the service to run as the gMSA as described in [Add the gMSA to the SharpHound Enterprise service](/hc/en-us/articles/Create-a-gMSA-for-use-with-SharpHound-Enterprise).
+14. If using a gMSA, according to our [Hardening Guidelines](/manage-bloodhound/securing-bloodhound-and-collectors/sharphound-hardening), change the service to run as the gMSA as described in [Add the gMSA to the SharpHound Enterprise service](/install-data-collector/install-sharphound/create-gmsa).
 15. Start the service once; the startup will fail but trigger the creation of the configuration and log directory in the service account's user directory: "%AppData%\\BloodHoundEnterprise"
-16. Change the files "settings.json" and "auth.json" in the configuration described in [SharpHound Enterprise Local Configuration](/hc/en-us/articles/SharpHound-Enterprise-Local-Configuration). In most cases, only the following needs to change:
+16. Change the files "settings.json" and "auth.json" in the configuration described in [SharpHound Enterprise Local Configuration](/install-data-collector/install-sharphound/local-configuration). In most cases, only the following needs to change:
     * In "settings.json"
         * Set "RestEndpoint" to the BloodHound Enterprise domain name in the format: "CODENAME.bloodhoundenterprise.io". This is the domain that the service connects to.
         * If using a proxy, set "Proxy" to the proxy name and port in the format: "proxy.acme.com:8080"
-    * [Create a BloodHound Enterprise collector client](/hc/en-us/articles/Create-a-BloodHound-Enterprise-collector-client), and then in "auth.json" set "Token" and "TokenID" to the values given after you created the client. This is the secret that the service authenticates with.
+    * [Create a BloodHound Enterprise collector client](/collect-data/enterprise-collection/create-collector), and then in "auth.json" set "Token" and "TokenID" to the values given after you created the client. This is the secret that the service authenticates with.
 17. Start the service. If service start fails see the headline: [The SharpHound Delegator Service won't start](#h_01GECRNKQG8YEXEEEDHTE4CG1B)
 18. Return to BloodHound Enterprise, and you should see the client reporting "🟢 Ready"
 <Frame>
   <img src="/assets/image-48.png" alt=""/>
 </Frame>
 19. Perform your scan by either:
-    1.  [Create a data collection schedule](/hc/en-us/articles/Create-a-data-collection-schedule)
-    2.  [Run an On Demand Scan](/hc/en-us/articles/Run-an-On-Demand-Scan)
+    1.  [Create a data collection schedule](/collect-data/enterprise-collection/collection-schedule)
+    2.  [Run an On Demand Scan](/collect-data/enterprise-collection/on-demand-scan)
 
 ### Upgrade SharpHound Enterprise
 
@@ -142,7 +142,7 @@ The installation log may be of help in troubleshooting and can be found in the f
 
 ### The SharpHound Delegator Service won't start
 
-Check the "TempDirectory" value in the configuration file "settings.json" described in [SharpHound Enterprise Local Configuration](/hc/en-us/articles/SharpHound-Enterprise-Local-Configuration).
+Check the "TempDirectory" value in the configuration file "settings.json" described in [SharpHound Enterprise Local Configuration](/install-data-collector/install-sharphound/local-configuration).
 
 If "TempDirectory" is _null_, the service account has not been granted local Administrator privileges. Add the service account to the local Administrators group and restart the service.
 

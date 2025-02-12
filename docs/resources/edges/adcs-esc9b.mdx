@@ -40,7 +40,7 @@ If the certificate template is of schema version 2 or above, and its attribute '
 If the certificate template is of schema version 1 or does not have any of the email flags, then
 continue to Step 4.
 
-If any of the two flags are present, you will need the victim’s mail attribute to be set. The value of
+If any of the two flags are present, you will need the victim's mail attribute to be set. The value of
 the attribute will be included in the issues certificate but it is not used to identify the target
 principal why it can be set to any arbitrary string.
 
@@ -59,7 +59,7 @@ Set-DomainObject -Identity VICTIM -Set @{'mail'='dummy@mail.com'}
 ```
 Step 4: Obtain a session as victim.
 
-There are several options for this step. You can obtain a session as SYSTEM on the host, which allows you to interact with AD as the computer account, by abusing control over the computer AD object (see [GenericAll edge](/hc/en-us/articles/GenericAll) documentation).
+There are several options for this step. You can obtain a session as SYSTEM on the host, which allows you to interact with AD as the computer account, by abusing control over the computer AD object (see [GenericAll edge](/resources/edges/generic-all) documentation).
 
 Step 5: Enroll certificate as victim.
 
@@ -121,7 +121,7 @@ If the certificate template is of schema version 2 or above, and its attribute '
 If the certificate template is of schema version 1 or does not have any of the email flags, then
 continue to Step 4.
 
-If any of the two flags are present, you will need the victim’s mail attribute to be set. The value of
+If any of the two flags are present, you will need the victim's mail attribute to be set. The value of
 the attribute will be included in the issues certificate but it is not used to identify the target
 principal why it can be set to any arbitrary string.
 
@@ -141,7 +141,7 @@ echo -e "dn: VICTIM-DN\nchangetype: modify\nreplace: mail\nmail: test@mail.com" 
 
 Step 4: Obtain a session as victim.
 
-There are several options for this step. You can obtain a session as SYSTEM on the host, which allows you to interact with AD as the computer account, by abusing control over the computer AD object (see [GenericAll edge](/hc/en-us/articles/GenericAll) documentation).
+There are several options for this step. You can obtain a session as SYSTEM on the host, which allows you to interact with AD as the computer account, by abusing control over the computer AD object (see [GenericAll edge](/resources/edges/generic-all) documentation).
 
 Step 5: Enroll certificate as victim.
 

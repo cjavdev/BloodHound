@@ -16,7 +16,7 @@ This page will describe the attacks we want to prevent and the remediations that
 
 We recommend using a [Group Managed Service Account](https://learn.microsoft.com/en-us/windows-server/security/group-managed-service-accounts/group-managed-service-accounts-overview) (gMSA) for the SharpHound service account rather than a regular AD user.
 
-Follow the article: [Create a GMSA for use with SharpHound Enterprise](/hc/en-us/articles/Create-a-gMSA-for-use-with-SharpHound-Enterprise).
+Follow the article: [Create a GMSA for use with SharpHound Enterprise](/resources/guides/create-gmsa-for-sharphound).
 
 A gMSA is a type of service account where the password is managed by Active Directory, eliminating the need for manual password management. This will ensure the service account password is:
 
@@ -40,7 +40,7 @@ Our testing has shown that adding the SharpHound service account to Protected Us
 
 We recommend tiering the SharpHound service account to follow the principle of “[elevated user accounts should not be used to log on to lower Tier assets](https://techcommunity.microsoft.com/t5/core-infrastructure-and-security/protecting-domain-administrative-credentials/ba-p/259210)”.
 
-Follow the article: [Deploying a tiered SharpHound Enterprise collector strategy](/hc/en-us/articles/Deploying-a-tiered-SharpHound-Enterprise-collector-strategy).
+Follow the article: [Deploying a tiered SharpHound Enterprise collector strategy](/resources/guides/tiered-sharphound-strategy).
 
 This recommendation is especially for organizations seeking to implement the [Active Directory Tier Model](https://learn.microsoft.com/en-us/microsoft-identity-manager/pam/tier-model-for-partitioning-administrative-privileges) or [Enterprise Access Model](https://learn.microsoft.com/en-us/security/privileged-access-workstations/privileged-access-access-model)
 
@@ -62,7 +62,7 @@ When the password is strong, it decreases the risk of an attacker guessing the p
 
 ### Attack 2: Kerberos delegation attacks
 
-When collecting data, the SharpHound service account will only perform a network logon (type 3) on remote computers. This logon type will not save the service account credentials in the remote computer’s memory. However, Kerberos delegation breaks this rule if the remote computer is configured with Kerberos unconstrained delegation. In that case, the remote computer will receive a copy of the service account’s Kerberos session ticket (TGT), which an attacker can extract from memory and utilize to authenticate as the service account. If the computer is configured with unconstrained delegation, the service account does not need to log on to the computer – the attacker can obtain service tickets as any user for services it is allowed to delegate to.
+When collecting data, the SharpHound service account will only perform a network logon (type 3) on remote computers. This logon type will not save the service account credentials in the remote computer's memory. However, Kerberos delegation breaks this rule if the remote computer is configured with Kerberos unconstrained delegation. In that case, the remote computer will receive a copy of the service account's Kerberos session ticket (TGT), which an attacker can extract from memory and utilize to authenticate as the service account. If the computer is configured with unconstrained delegation, the service account does not need to log on to the computer – the attacker can obtain service tickets as any user for services it is allowed to delegate to.
 
 #### Preferred remediation: Protected Users group (gMSA only)
 
@@ -70,7 +70,7 @@ Members of the Protected Users group cannot be delegated, as described by Micros
 
 #### Alternative remediation: Mark the account as sensitive
 
-It is possible to prevent an AD principal from using Kerberos delegation services by enabling the account option “Account is sensitive and cannot be delegated”:
+It is possible to prevent an AD principal from using Kerberos delegation services by enabling the account option "Account is sensitive and cannot be delegated":
 
 <Frame>
   <img src="/assets/image-2-69.png"/>
@@ -80,7 +80,7 @@ On a Group Manages Service Account (gMSA), this account option is not visible in
 <Frame>
   <img src="/assets/image-2-70.png"/>
 </Frame>
-The value should be _True_ for the account to be protected.
+The value should be _True_ for the account to be protected.
 
 ### Attack 3: Authentication relaying
 
@@ -90,11 +90,11 @@ It is possible to relay Kerberos authentication under specific circumstances, bu
 
 #### Preferred remediation: Protected Users group (gMSA only)
 
-Members of the Protected Users group cannot authenticate with NTLM, as described by Microsoft [here](https://learn.microsoft.com/en-us/windows-server/security/credentials-protection-and-management/protected-users-security-group#domain-controller-protections-for-protected-users). This means the SharpHound service account will not be vulnerable to NTLM attacks. This remediation will break the SharpHound service if a regular AD is used instead of a gMSA. 
+Members of the Protected Users group cannot authenticate with NTLM, as described by Microsoft [here](https://learn.microsoft.com/en-us/windows-server/security/credentials-protection-and-management/protected-users-security-group#domain-controller-protections-for-protected-users). This means the SharpHound service account will not be vulnerable to NTLM attacks. This remediation will break the SharpHound service if a regular AD is used instead of a gMSA.
 
 #### Alternative remediation: Block outgoing NTLM
 
-Outgoing NTLM can be denied entirely from the SharpHound server by configuring the security option [Network security: Restrict NTLM: Outgoing NTLM traffic to remote servers](https://learn.microsoft.com/en-us/windows/security/threat-protection/security-policy-settings/network-security-restrict-ntlm-outgoing-ntlm-traffic-to-remote-servers) to _Deny All:_
+Outgoing NTLM can be denied entirely from the SharpHound server by configuring the security option [Network security: Restrict NTLM: Outgoing NTLM traffic to remote servers](https://learn.microsoft.com/en-us/windows/security/threat-protection/security-policy-settings/network-security-restrict-ntlm-outgoing-ntlm-traffic-to-remote-servers) to _Deny All:_
 
 <Frame>
   <img src="/assets/image-2-71.png"/>
@@ -112,7 +112,7 @@ _See the remediation of the previous attack (Authentication relaying)._
 
 ### Attack 5: Reusable credentials in LSASS
 
-When an account logs in on a Windows computer, the account’s credentials will be cached in LSASS memory in a reusable format, such that Windows can reauthenticate the user without the user having to type in their password again and again. This is known as Single Sign-On (SSO).
+When an account logs in on a Windows computer, the account's credentials will be cached in LSASS memory in a reusable format, such that Windows can reauthenticate the user without the user having to type in their password again and again. This is known as Single Sign-On (SSO).
 
 An attacker with administrative access to the computer can read the cached credentials out of LSASS and thereby compromise the account.
 
@@ -122,7 +122,7 @@ The SharpHound service account performs only a network logon (type 3) when it co
 
 ### Attack 6: Cached Domain Credentials Cracking
 
-Normally, when a domain user logs in on a domain-joined Windows computer, the authentication will involve a Domain Controller telling the computer if the account’s credentials are valid. But if the computer cannot reach a Domain Controller (due to network issues etc.), this authentication process does not work. Windows will, by default, cache the account’s credentials in the security registry hive in a non-reusable format (MS-Cache v2 hash), such that the computer can verify the credential even if it cannot reach any Domain Controller.
+Normally, when a domain user logs in on a domain-joined Windows computer, the authentication will involve a Domain Controller telling the computer if the account's credentials are valid. But if the computer cannot reach a Domain Controller (due to network issues etc.), this authentication process does not work. Windows will, by default, cache the account's credentials in the security registry hive in a non-reusable format (MS-Cache v2 hash), such that the computer can verify the credential even if it cannot reach any Domain Controller.
 
 An attacker with administrative access to the computer can read the cached credentials out of the registry hive, crack the password hash, and thereby compromise the account.
 
@@ -132,7 +132,7 @@ The SharpHound service account performs only a Network logon (type 3) when it co
 
 ### Attack 7: Kerberoasting
 
-Any AD user can request and receive a Kerberos service ticket of any user (service account) with a Service Principal Name (SPN) attribute set. This service ticket is encrypted with a Kerberos key derived from the service account’s password. An attacker can obtain the password of the service account by cracking the service ticket (guessing the password that decrypts the ticket). This attack is known as Kerberoasting.
+Any AD user can request and receive a Kerberos service ticket of any user (service account) with a Service Principal Name (SPN) attribute set. This service ticket is encrypted with a Kerberos key derived from the service account's password. An attacker can obtain the password of the service account by cracking the service ticket (guessing the password that decrypts the ticket). This attack is known as Kerberoasting.
 
 #### Remediation - No remediation required
 

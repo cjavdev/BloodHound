@@ -8,20 +8,20 @@ title: AzureHound Enterprise System Requirements and Deployment Process
 The AzureHound Enterprise service is a critical element in your deployment that collects and uploads data about your Azure environment to your BloodHound Enterprise tenant for processing and analysis.
 
 
-AzureHound Enterprise is generally deployed as a service on a single Windows system per Azure tenant.  You need to create (at least) a single AzureHound server for all the tenants in scope and one Azure Enterprise Application service instance for each tenant.
+AzureHound Enterprise is generally deployed as a service on a single Windows system per Azure tenant.  You need to create (at least) a single AzureHound server for all the tenants in scope and one Azure Enterprise Application service instance for each tenant.
 
 
-Running multiple AzureHound collector instances on a single server requires the collectors to be installed as Scheduled Tasks instead of Windows Services. Installation instructions for such a configuration can be found at: [Setting up multiple AzureHound collectors on the same server with scheduled tasks](/hc/en-us/articles/Running-multiple-AzureHound-Enterprise-collectors-on-one-server-with-Scheduled-Tasks).
+Running multiple AzureHound collector instances on a single server requires the collectors to be installed as Scheduled Tasks instead of Windows Services. Installation instructions for such a configuration can be found at: [Setting up multiple AzureHound collectors on the same server with scheduled tasks](/install-data-collector/install-azurehound/multiple-collectors).
 
-While it is possible to run both AzureHound and SharpHound on the same machine, the hardware recommendations for each application persist. 
+While it is possible to run both AzureHound and SharpHound on the same machine, the hardware recommendations for each application persist.
 
 ## Deployment Process Overview
 
 To deploy a new AzureHound collector service:
 
-1.  Configure Azure: [AzureHound Enterprise Azure Configuration](/hc/en-us/articles/AzureHound-Enterprise-Azure-Configuration)
-2.  Create your AzureHound configuration: [AzureHound Enterprise Local Configuration](/hc/en-us/articles/Create-an-AzureHound-Configuration)
-3.  Deploy and maintain AzureHound: [Run and Upgrade AzureHound (Windows, Docker, or Kubernetes)](/hc/en-us/articles/Install-and-Upgrade-AzureHound-Windows-Docker-or-Kubernetes)
+1.  Configure Azure: [AzureHound Enterprise Azure Configuration](/install-data-collector/install-azurehound/azure-configuration)
+2.  Create your AzureHound configuration: [Create an AzureHound Configuration](/install-data-collector/install-azurehound/create-configuration)
+3.  Deploy and maintain AzureHound: [Run and Upgrade AzureHound (Windows, Docker, or Kubernetes)](/install-data-collector/install-azurehound/installation-options)
 
 ## Server Requirements
 

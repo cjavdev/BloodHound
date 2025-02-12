@@ -6,7 +6,7 @@ title: Install and Upgrade AzureHound (Windows, Docker, or Kubernetes)
   <img src="/assets/18246479746331.png"/>
 </Frame>
 
-_You will need your AzureHound Enterprise configuration file from [Create an AzureHound Configuration](/hc/en-us/articles/Create-an-AzureHound-Configuration) prior to beginning this process.
+_You will need your AzureHound Enterprise configuration file from [Create an AzureHound Configuration](/install-data-collector/install-azurehound/create-configuration) prior to beginning this process.
 
 
 ## Windows
@@ -15,9 +15,9 @@ _You will need your AzureHound Enterprise configuration file from [Create an Azu
 
 This shows how to install AzureHound Enterprise as a service. Many organizations choose to run AzureHound Enterprise alongside SharpHound Enterprise from the same system. These services can live alongside each other and will not conflict.
 
-Organizations who wish to run multiple AzureHound Enterprise collectors on the same server, for example, because of multiple Azure tenants, must install AzureHound Enterprise as Scheduled Tasks instead of Windows Services. See [Setting up multiple AzureHound collectors on the same server with scheduled tasks](/hc/en-us/articles/Running-multiple-AzureHound-Enterprise-collectors-on-one-server-with-Scheduled-Tasks).
+Organizations who wish to run multiple AzureHound Enterprise collectors on the same server, for example, because of multiple Azure tenants, must install AzureHound Enterprise as Scheduled Tasks instead of Windows Services. See [Setting up multiple AzureHound collectors on the same server with scheduled tasks](/install-data-collector/install-azurehound/multiple-collectors).
 
-1.  Follow the article [Create an AzureHound Configuration](/hc/en-us/articles/Create-an-AzureHound-Configuration) to create a configuration file.
+1.  Follow the article [Create an AzureHound Configuration](/install-data-collector/install-azurehound/create-configuration) to create a configuration file.
 
 2.  Create a directory for the AzureHound service binary. We recommend using "C:\\Program Files\\AzureHound Enterprise" as the Program Files directory is write-protected from non-administrative users.
 ```
@@ -61,15 +61,15 @@ Upgrading AzureHound Enterprise is done by replacing the previous service binary
 <Frame>
   <img src="/assets/image-167.png" alt=""/>
 </Frame>
-3.  Download AzureHound Enterprise by clicking the button **DOWNLOAD AZUREHOUND vX.X.X (.ZIP)**
+3.  Download AzureHound Enterprise by clicking the button **DOWNLOAD AZUREHOUND vX.X.X (.ZIP)**
 <Frame>
   <img src="/assets/image-168.png" alt=""/>
 </Frame>
 4.  Extract the contents of the zip archive and locate the binary suitable for your system's architecture
 5.  Log into the server running your AzureHound service
-6.  Click “Start” and then locate the “Services” application or run "services.msc"
+6.  Click "Start" and then locate the "Services" application or run "services.msc"
 7.  Locate the AzureHound service and open its properties
-8.  From the service properties window, stop AzureHound by clicking **Stop**
+8.  From the service properties window, stop AzureHound by clicking **Stop**
 <Frame>
   <img src="/assets/image-169.png" alt=""/>
 </Frame>
@@ -84,7 +84,7 @@ Upgrading AzureHound Enterprise is done by replacing the previous service binary
 
 Instead of installing AzureHound as a service, it is also possible to run AzureHound a single time which runs until the command line is closed or the user logs off. This is often used in troubleshooting scenarios.
 
-1.  Follow the article [Create an AzureHound Configuration](/hc/en-us/articles/Create-an-AzureHound-Configuration) to create a configuration file.
+1.  Follow the article [Create an AzureHound Configuration](/install-data-collector/install-azurehound/create-configuration) to create a configuration file.
 2.  Open a command line as a local administrator, navigate to the directory containing AzureHound Enterprise, and run:
 ```
     azurehound.exe start
@@ -94,7 +94,7 @@ Instead of installing AzureHound as a service, it is also possible to run AzureH
 <Frame>
   <img src="/assets/image-171.png" alt=""/>
 </Frame>
-4.  If needing to test AzureHound's connectitity to Azure; keep the command prompt open and follow [Run an On Demand Scan](/hc/en-us/articles/Run-an-On-Demand-Scan)
+4.  If needing to test AzureHound's connectitity to Azure; keep the command prompt open and follow [Run an On Demand Scan](/collect-data/enterprise-collection/on-demand-scan)
 5.  When started and AzureHound has fetched the job, the command line will output data while the collection is running.
     * If successful, the final message will be "_Collection completed successfully_"
     * If unsuccessful, check the log for errors, or check the AzureHound log generated next to the binary, or contact the BloodHound Enterprise team for support.
@@ -108,7 +108,7 @@ Instead of installing AzureHound as a service, it is also possible to run AzureH
 
 ### Run AzureHound Enterprise on Docker
 
-1.  Use the attached sample file: [docker-compose.yaml](https://support.bloodhoundenterprise.io/assets/9325923144347)
+1.  Use the attached sample file: [docker-compose.yaml](/assets/docker-compose.yaml) 397 Bytes
 2.  Integrate the appropriate structure into your existing configuration or utilize it as a new configuration in Docker, moving the associated config.json, cert.pem, and key.pem files to the appropriate location, and updating config.json according to your assigned values.
 3.  In your docker directory, run:
 ```
@@ -158,6 +158,6 @@ Instead of installing AzureHound as a service, it is also possible to run AzureH
 
 2.  Review the container logs and BloodHound Enterprise user interface to verify that AzureHound has successfully connected.
 
-* [docker-compose.yaml](https://support.bloodhoundenterprise.io/hc/en-us/article_attachments/9325923144347)397 Bytes
-* [deployment.yaml](https://support.bloodhoundenterprise.io/hc/en-us/article_attachments/9326136548635)2 KB
+* [docker-compose.yaml](/assets/docker-compose.yaml) 397 Bytes
+* [deployment.yaml](/assets/deployment.yaml) 2 KB
 
