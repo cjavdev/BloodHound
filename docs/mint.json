@@ -189,6 +189,7 @@
           "group": "BloodHound Enterprise Compliance Framework",
           "pages": [
             "manage-bloodhound/compliance-framework/overview",
+            "manage-bloodhound/compliance-framework/resources",
             "manage-bloodhound/compliance-framework/nist-sp-800-171",
             "manage-bloodhound/compliance-framework/nist-sp-800-53",
             "manage-bloodhound/compliance-framework/nist-csf-v2",
