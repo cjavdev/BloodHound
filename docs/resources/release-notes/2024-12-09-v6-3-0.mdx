@@ -53,7 +53,7 @@ These migrations have already begun, and we will continue to monitor all environ
 
 ### New and Improved Features
 
-* **_\[BHE Only\]_ Completely new Posture page** \- After serving us well for several years, it's time to say goodbye to the old Posture page! [The revamped view](/hc/en-us/articles/Posture-Page) is considerably improved over the previous interface in several ways. This includes:
+* **_\[BHE Only\]_ Completely new Posture page** \- After serving us well for several years, it's time to say goodbye to the old Posture page! [The revamped view](/analyze-data/bloodhound-gui/posture-page) is considerably improved over the previous interface in several ways. This includes:
     * Provides visibility into resolved Attack Paths
     * Adds visibility to additional metrics to track remediation progress over time
     * Displays most relevant data within a single page, removing unnecessary scrolling
@@ -61,7 +61,7 @@ These migrations have already begun, and we will continue to monitor all environ
 * **_\[BHE Only\]_ Early access opportunity: Improved analysis algorithm** \- Highlighted in the announcements this week, this new algorithm enables BloodHound Enterprise to analyze even more data than before and generally at a significantly reduced analysis duration. Simultaneously, it provides improved visibility into the risks in your environment, enabling further prioritization of risk remediation on the Attack Paths that matter most.
 * **Hide node/edge label toggle** \- One of our top feature requests since the release of BloodHound CE, the ability to hide node and edge labels makes a triumphant return! Break out that redaction tool no longer and hide any labels you deem sensitive directly within the UI. Thank you, [@palt](https://github.com/palt), for your contribution!
     ![image1.gif](/assets/31706404739355.png)
-* **New CoerceToTGT edge type** \- The [CoerceToTGT](/hc/en-us/articles/CoerceToTGT) edge indicates principals configured for unconstrained delegation where attackers can coerce privileged computer targets into sending their ticket-granting ticket (TGT) to the attacker and compromise the domain. For all users, this will make these paths appear within the regular course of pathfinding, using Cypher, etc.
+* **New CoerceToTGT edge type** \- The [CoerceToTGT](/resources/edges/coerce-to-tgt) edge indicates principals configured for unconstrained delegation where attackers can coerce privileged computer targets into sending their ticket-granting ticket (TGT) to the attacker and compromise the domain. For all users, this will make these paths appear within the regular course of pathfinding, using Cypher, etc.
 
     For BloodHound Enterprise users, this edge will generate a single Attack Path finding type that replaces all previous "Unconstrained Delegation" findings. This change will improve the user experience by summarizing what was previously displayed as multiple findings within a single location. Its severity will be associated with the exposure of the principal configured for unconstrained delegation.
     ![image2.png](/assets/31706404740891.png)
@@ -74,7 +74,7 @@ These migrations have already begun, and we will continue to monitor all environ
 
     * **DnsAdmins (group):** DnsAdmins controls DNS, which enables an attacker to trick a privileged victim into authenticating against an attacker-controlled host as if it were another host. This allows a Kerberos to relay attack. Also, control over DNS enables disruption of Tier Zero since Kerberos depends on DNS by default. The group could previously use a feature in the Microsoft DNS management protocol to make the DNS service load any DLL and thereby obtain a session as SYSTEM on the DNS server. This vulnerability was patched in December 2021.
 
-* **OIDC Support** \- BloodHound now supports OIDC (as well as SAMLv2) for SSO providers! See [OIDC in BloodHound](/hc/en-us/articles/OIDC-in-BloodHound) for more details.
+* **OIDC Support** \- BloodHound now supports OIDC (as well as SAMLv2) for SSO providers! See [OIDC in BloodHound](/manage-bloodhound/auth/oidc) for more details.
 * **Automatic SSO Redirection** \- Environments configured with a single SSO provider will automatically redirect to your provider when clicking the "Login via SSO" button.
 * **Enterprise Domain Controllers Group Improvement** \- Improved consistency when creating the Enterprise Domain Controllers group to remove confusion based on how complete a given collection was. (_Requires SharpHound upgrade_)
 * **_\[BHE Only\]_ Updated wording on the "Accept" dialog for accuracy.**

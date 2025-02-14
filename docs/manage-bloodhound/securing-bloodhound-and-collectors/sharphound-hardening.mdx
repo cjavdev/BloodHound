@@ -16,7 +16,7 @@ This page will describe the attacks we want to prevent and the remediations that
 
 We recommend using a [Group Managed Service Account](https://learn.microsoft.com/en-us/windows-server/security/group-managed-service-accounts/group-managed-service-accounts-overview) (gMSA) for the SharpHound service account rather than a regular AD user.
 
-Follow the article: [Create a GMSA for use with SharpHound Enterprise](/resources/guides/create-gmsa-for-sharphound).
+Follow the article: [Create a gMSA for SharpHound](/install-data-collector/install-sharphound/create-gmsa).
 
 A gMSA is a type of service account where the password is managed by Active Directory, eliminating the need for manual password management. This will ensure the service account password is:
 
@@ -38,9 +38,9 @@ Our testing has shown that adding the SharpHound service account to Protected Us
 
 ### Tiering SharpHound
 
-We recommend tiering the SharpHound service account to follow the principle of “[elevated user accounts should not be used to log on to lower Tier assets](https://techcommunity.microsoft.com/t5/core-infrastructure-and-security/protecting-domain-administrative-credentials/ba-p/259210)”.
+We recommend tiering the SharpHound service account to follow the principle of "[elevated user accounts should not be used to log on to lower Tier assets](https://techcommunity.microsoft.com/t5/core-infrastructure-and-security/protecting-domain-administrative-credentials/ba-p/259210)".
 
-Follow the article: [Deploying a tiered SharpHound Enterprise collector strategy](/resources/guides/tiered-sharphound-strategy).
+Follow the article: [Tiered SharpHound Strategy](/install-data-collector/install-sharphound/tiered-collector-strategy).
 
 This recommendation is especially for organizations seeking to implement the [Active Directory Tier Model](https://learn.microsoft.com/en-us/microsoft-identity-manager/pam/tier-model-for-partitioning-administrative-privileges) or [Enterprise Access Model](https://learn.microsoft.com/en-us/security/privileged-access-workstations/privileged-access-access-model)
 

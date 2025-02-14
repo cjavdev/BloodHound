@@ -15,15 +15,15 @@ Additionally, Andy Robbins, co-creator of BloodHound and Principal Product Archi
 
 SharpHound v2 is officially generally available. If you have not already done so, please make sure you upgrade your SharpHound collectors to v2.1+. SharpHound v1 will officially be end-of-life on May 1, 2023.
 
-**NOTE:** Upgrading to SharpHound v2+ must occur concurrently on all services and requires enabling the “Enable post processing of local groups” early access feature simultaneously.
+**NOTE:** Upgrading to SharpHound v2+ must occur concurrently on all services and requires enabling the "Enable post processing of local groups" early access feature simultaneously.
 
-Instructions to upgrade your collector may be found [here](/hc/en-us/articles/Install-and-Upgrade-SharpHound-Enterprise)!
+Instructions to upgrade your collector may be found [here](/resources/collectors/sharphound-enterprise/installation)!
 
 ## Summary
 
 * **BloodHound Enterprise**
     * New and Improved Features - Massive Azure update, pathfinding logic and performance enhancements, Finished Jobs Log will include counts of successful domain collections, API Explorer search is no longer case sensitive.
-    * Bug Fixes - Objects should no longer have multiple AzAddSecret edges between them, manually tagged Azure Tier Zero objects now consistently show findings in Attack Paths, and improved error handling in the GUI. 
+    * Bug Fixes - Objects should no longer have multiple AzAddSecret edges between them, manually tagged Azure Tier Zero objects now consistently show findings in Attack Paths, and improved error handling in the GUI.
 * **SharpHound Enterprise (v2.1.4)**
     * New and Improved Features - run logs and compstatus outputs will update live instead of waiting for the completion of a collection.
     * Bug Fixes - Ingest data will only post once, DC settings changes will be picked up on every collection job, and improved logging outputs.
@@ -39,7 +39,7 @@ Instructions to upgrade your collector may be found [here](/hc/en-us/articles/In
         * Supported in AzureHound v1.2.4: AZAutomationAccount, AZLogicApp, AZFunctionApp.
         * Requires AzureHound v2.0.1: AZWebApp, AZContainerRegistry, AZManagedCluster, AZVMScaleSet.
     * New Attack Path primitives
-        * Supported in AzureHound v1.2.4: AZWebsiteContributor, AZLogicAppContributor, AZAutomationContributor, AZMGApplication\_ReadWrite\_All, AZMGAppRoleAssignment\_ReadWrite\_All, AZMGDirectory\_ReadWrite\_All, AZMGGroup\_ReadWrite\_All, AZMGGroupMember\_ReadWrite\_All, AZMGServicePrincipalEndpoint\_ReadWrite\_All, AZMGAddSecret, AZMGAddOwner, AZMGAddMember, AZMGGrantAppRoles, AZMGGrantRole.
+        * Supported in AzureHound v1.2.4: AZWebsiteContributor, AZLogicAppContributor, AZAutomationContributor, AZMGApplication_ReadWrite_All, AZMGAppRoleAssignment_ReadWrite_All, AZMGDirectory_ReadWrite_All, AZMGGroup_ReadWrite_All, AZMGGroupMember_ReadWrite_All, AZMGServicePrincipalEndpoint_ReadWrite_All, AZMGAddSecret, AZMGAddOwner, AZMGAddMember, AZMGGrantAppRoles, AZMGGrantRole.
         * Requires AzureHound v2.0.1: AZNodeResourceGroup, AZWebsiteContributor, AZAKSContributor.
 * **Pathfinding improvements** \- Pathfinding logic has undergone a significant update resulting in significant performance enhancements. Results will return much faster, and users should see significantly fewer resource constraint errors going forward.
 * **Finished Jobs Log improved messaging** -When performing cross-trust collections, it's common that SharpHound cannot collect from every visible domain. The Finished Jobs Log will now provide counts of successful (and total possible) domains to help identify whether collection coverage was completed as expected.
@@ -50,7 +50,7 @@ Instructions to upgrade your collector may be found [here](/hc/en-us/articles/In
 * Objects should no longer have multiple AzAddSecret edges between them.
 * Resolved a logic issue with the AzResetPassword edge.
 * Manually tagged Azure Tier Zero objects now consistently show findings in Attack Paths.
-* Improved error handling in the GUI. 
+* Improved error handling in the GUI.
 
 ### SharpHound Enterprise (v2.1.4)
 
@@ -66,7 +66,7 @@ _Minimum version of SharpHound Service to support all current functionality: v2.
 * DC settings changes will be picked up on every collection job, rather than only on service restart.
 * Improved logging outputs where logs previously showed variable names instead of the values held in the variables.
 
-**NOTE:** Upgrading to SharpHound v2+ must occur concurrently on all services and requires enabling the “User Rights Assignment Collection” experimental feature at the same time. Please contact your TAM or respond to this email for assistance.
+**NOTE:** Upgrading to SharpHound v2+ must occur concurrently on all services and requires enabling the "User Rights Assignment Collection" experimental feature at the same time. Please contact your TAM or respond to this email for assistance.
 
 ### AzureHound Enterprise (v2.0.1)
 

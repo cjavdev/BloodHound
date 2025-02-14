@@ -49,12 +49,34 @@ Register today: [https://events.humanitix.com/tours/so-con-2024](https://events.
     * Bug Fixes
         * Updated logic for collection and reconciliation of ADCS objects.
         * Resolving a SID to a domain will now appropriately utilize cache entries (@uidzeroo).
-        * _\[CE Only\] _GPO Local Group processing will no longer stop processing on a failed account name resolution (@nurfed1).
-        * _\[CE Only\] _Updated use of LDAP credentials when collecting domain details to prevent invalid username/password issues (@nurfed1).
+        * _\[CE Only\]_ GPO Local Group processing will no longer stop processing on a failed account name resolution (@nurfed1).
+        * _\[CE Only\]_ Updated use of LDAP credentials when collecting domain details to prevent invalid username/password issues (@nurfed1).
 * **AzureHound (v2.1.6)**
     * _No new release._
 
-### BloodHound (v5.5.0)
+## BloodHound v5.5.0
+
+### Early Access: AD Certificate Services Attack Paths
+
+We're excited to announce early access support for Active Directory Certificate Services (ADCS) Attack Paths in BloodHound Enterprise! This release includes:
+
+- Detection of ESC1, ESC3, ESC6a, ESC9a, and ESC10a attack paths
+- Visualization of certificate-based attack paths
+- Documentation of ADCS-related security risks
+
+### New Features
+
+- **ADCS Attack Path Support**: Early access to ADCS attack path detection
+- **Improved Memory Management**: Increased memory limits for query execution
+- **UI Enhancements**: Better visualization of complex attack paths
+
+### Bug Fixes
+
+- Fixed several issues with entity panels
+- Improved error handling for API requests
+- Resolved UI rendering inconsistencies
+
+### BloodHound Enterprise v5.5.0
 
 #### New and Improved Features
 
@@ -86,21 +108,22 @@ Register today: [https://events.humanitix.com/tours/so-con-2024](https://events.
 * _\[BHE Only\]_ The AzureT0MgmtGroupControl finding will no longer appear, and historical records have been removed.
 * _\[CE Only\]_ Resolved an issue impacting the use of multi-underscore environment variables when running an environment.
 
-### SharpHound (v2.3.3 - BHE, v2.3.1 - CE)
+## SharpHound v2.3.1
 
-#### New and Improved Features
+### New Features
 
-* **Additional support for ADCS collection capabilities _-_**SharpHound will now collect additional information required to analyze and generate ADCS Attack Paths.
+- **ADCS Collection Support**: Added collection capabilities for certificate templates
+- **Better Performance**: Optimized collection routines
+- **Improved Logging**: More detailed collection status information
 
-#### Bug Fixes
+### Bug Fixes
 
-* Updated logic for collection and reconciliation of ADCS objects.
-* Resolving a SID to a domain will now appropriately utilize cache entries (@uidzeroo).
-* _\[CE Only\] _GPO Local Group processing will no longer stop processing on a failed account name resolution (@nurfed1).
-* _\[CE Only\] _Updated use of LDAP credentials when collecting domain details to prevent invalid username/password issues (@nurfed1).
+- Fixed an issue with account name resolution
+- Resolved memory usage during large collections
+- Improved error handling for network timeouts
 
-### AzureHound (v2.1.6)
+## AzureHound v2.1.6
 
-_No new release._
+No new release for AzureHound in this version.
 
 

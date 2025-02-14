@@ -81,19 +81,19 @@ If the system is a Windows OS, SharpHound proceeds with the next set of checks:
 ```json
     Test-NetConnection -ComputerName <HOST> -Port 445
 ```
-            (replace <HOST> with the system's DNS name as seen in `compstatus.csv`).
+            (replace `<HOST>` with the system's DNS name as seen in `compstatus.csv`).
         * Ensure that the system running SharpHound can reach the system checked on TCP port 445 **within 500ms**.
             From the SharpHound system, run:
 ```json
     Measure-Command { Test-NetConnection -ComputerName <HOST> -Port 445 }
 ```
-            (replace <HOST> with the system's DNS name as seen in `compstatus.csv`).
+            (replace `<HOST>` with the system's DNS name as seen in `compstatus.csv`).
         * Ensure that the system's DNS name found in `compstatus.csv` can be resolved, and matches the system's DNS name in Active Directory.
             From the SharpHound system, check the name can be resolved by running:
 ```json
     Resolve-DnsName -Name <HOST>
 ```
-            (replace <HOST> with the system's DNS name as seen in `compstatus.csv`).
+            (replace `<HOST>` with the system's DNS name as seen in `compstatus.csv`).
         * Ensure that a network layer above TCP (e.g., SMB) is not being blocked by a security solution, such as an IDPS.
 
 After these steps, if the system is not available, no further collection attempts are made.
